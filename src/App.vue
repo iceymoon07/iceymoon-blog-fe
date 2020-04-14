@@ -1,6 +1,16 @@
 <template>
-  <div id="app">blog</div>
+  <div id="app">
+    
+  </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {};
+  }
+};
+</script>
 
 <style>
 * {
