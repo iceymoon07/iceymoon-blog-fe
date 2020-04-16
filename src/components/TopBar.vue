@@ -17,6 +17,7 @@ export default {
 
 <style lang="less" scoped>
 .top-bar {
+  width: 100%;
   height: 60px;
   background-color: #fff;
   display: flex;

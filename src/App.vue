@@ -6,7 +6,9 @@
       <!--顶栏-->
       <top-bar />
       <!--路由视图区域-->
-      <router-view />
+      <div class="router-view">
+        <router-view />
+      </div>
     </div>
   </div>
 </template>
@@ -48,6 +50,17 @@ body {
   .main {
     width: 85%;
     background-color: #f4f5f5;
+    .router-view {
+      background-color: #fff;
+      width: 70%;
+      height: calc(100% - 90px);
+      margin-top: 30px;
+      margin-left: 10%;
+      overflow: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
   }
 }
 </style>
