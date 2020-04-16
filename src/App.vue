@@ -6,9 +6,9 @@
       <!--顶栏-->
       <top-bar />
       <!--路由视图区域-->
-      <div class="router-view">
-        <router-view />
-      </div>
+      <transition name="el-fade-in">
+        <router-view class="router-view" v-show="show" />
+      </transition>
     </div>
   </div>
 </template>
@@ -20,7 +20,7 @@ import TopBar from "./components/TopBar";
 export default {
   components: { LeftNav, TopBar },
   data() {
-    return {};
+    return { show: true };
   }
 };
 </script>
@@ -56,10 +56,10 @@ body {
     }
     .router-view {
       background-color: #fff;
-      width: 60%;
+      width: 65%;
       min-height: calc(100% - 80px);
       margin-top: 30px;
-      margin-left: 10%;
+      margin-left: 6%;
     }
   }
 }

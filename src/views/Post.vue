@@ -1,6 +1,6 @@
 <template>
   <div class="post">
-    <div>文章</div>
+    <div>使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。</div>
     <div class="post-nav"></div>
   </div>
 </template>
@@ -12,10 +12,10 @@ export default {};
 <style lang="less" scoped>
 .post-nav {
     position: fixed;
-    top: 20vh;
-    right: 5vw;
+    top: 80px;
+    right: 5%;
     background-color: #fff;
     width: 250px;
-    height: 350px;
+    height: 80%;
 }
 </style>
