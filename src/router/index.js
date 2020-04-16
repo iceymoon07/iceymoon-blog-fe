@@ -6,6 +6,7 @@ import Project from "../views/Project"
 import Link from "../views/Link"
 import About from "../views/About"
 import Edit from "../views/Edit"
+import Post from '../views/Post'
 
 Vue.use(VueRouter);
 
@@ -39,6 +40,11 @@ const routes = [
         path: "/edit",
         name: "Edit",
         component: Edit
+    },
+    {
+        path: "/post",
+        name: "Post",
+        component: Post
     }
 ];
 

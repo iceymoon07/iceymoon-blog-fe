@@ -50,16 +50,16 @@ body {
   .main {
     width: 85%;
     background-color: #f4f5f5;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      //display: none;
+    }
     .router-view {
       background-color: #fff;
-      width: 70%;
-      height: calc(100% - 90px);
+      width: 60%;
+      min-height: calc(100% - 80px);
       margin-top: 30px;
       margin-left: 10%;
-      overflow: auto;
-      &::-webkit-scrollbar {
-        display: none;
-      }
     }
   }
 }
