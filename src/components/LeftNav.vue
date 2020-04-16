@@ -65,7 +65,7 @@ export default {
     cursor: pointer;
     margin: 20px 0;
     text-align: center;
-    font: 24px chunkfive;
+    font: 26px chunkfive;
   }
   .el-menu {
     width: 100%;
