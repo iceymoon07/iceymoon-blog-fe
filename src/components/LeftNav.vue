@@ -34,7 +34,9 @@
     </el-menu>
     <div class="info">
       <i class="iconfont iconlogo-qq"></i>
-      <i class="iconfont icongithub"></i>
+      <a href="https://github.com/iceymoon07" target="_blank">
+        <i class="iconfont icongithub"></i>
+      </a>
       <i class="iconfont icongmail"></i>
     </div>
   </div>
@@ -54,6 +56,10 @@ export default {
 .left-nav {
   background-color: #22313f;
   width: 15%;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   color: white;
   .logo {
     cursor: pointer;
@@ -70,6 +76,16 @@ export default {
   .info {
     text-align: center;
     margin-top: 230px;
+    a {
+      text-decoration: none;
+      &:hover {
+        opacity: 0.5;
+        color: #fff;
+      }
+      &:visited {
+        color: #fff;
+      }
+    }
     i {
       font-size: 26px;
       margin-right: 20px;

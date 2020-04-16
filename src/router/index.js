@@ -5,6 +5,7 @@ import Archives from "../views/Archives"
 import Project from "../views/Project"
 import Link from "../views/Link"
 import About from "../views/About"
+import Edit from "../views/Edit"
 
 Vue.use(VueRouter);
 
@@ -34,6 +35,11 @@ const routes = [
         name: "About",
         component: About
     },
+    {
+        path: "/edit",
+        name: "Edit",
+        component: Edit
+    }
 ];
 
 const router = new VueRouter({

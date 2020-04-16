@@ -26,14 +26,15 @@ export default {
 <style lang="less">
 @font-face {
   font-family: chunkfive;
-  src: url('../public/fonts/chunkfive-regular-webfont.woff');
-  src: url('../public/fonts/chunkfive-regular-webfont.woff2');
+  src: url("../public/fonts/chunkfive-regular-webfont.woff");
+  src: url("../public/fonts/chunkfive-regular-webfont.woff2");
 }
 
 * {
   margin: 0;
   padding: 0;
-  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 }
 
 html,
