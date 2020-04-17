@@ -6,7 +6,7 @@
         <i class="iconfont iconhome"></i>
         <span>首页</span>
       </el-menu-item>
-      <el-menu-item index="2" @click="$router.push('archives')">
+      <el-menu-item index="2" @click="$router.push('/archives')">
         <i class="iconfont iconfolder"></i>
         <span>归档</span>
       </el-menu-item>
@@ -19,15 +19,15 @@
           <span>{{item}}</span>
         </el-menu-item>
       </el-submenu>
-      <el-menu-item index="4" @click="$router.push('project')">
+      <el-menu-item index="4" @click="$router.push('/project')">
         <i class="iconfont iconapplication"></i>
         <span>项目</span>
       </el-menu-item>
-      <el-menu-item index="5" @click="$router.push('link')">
+      <el-menu-item index="5" @click="$router.push('/link')">
         <i class="iconfont iconlianjie"></i>
         <span>链接</span>
       </el-menu-item>
-      <el-menu-item index="6" @click="$router.push('about')">
+      <el-menu-item index="6" @click="$router.push('/about')">
         <i class="iconfont iconaccount"></i>
         <span>关于</span>
       </el-menu-item>
