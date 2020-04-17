@@ -1,18 +1,24 @@
 <template>
-  <div class="post">
-    <div class="title">{{title}}</div>
-    <div class="content">{{content}}</div>
+  <div class="post" v-if="post">
+    <div class="title">{{post.title}}</div>
+    <div class="content">{{post.content}}</div>
     <div class="post-nav"></div>
   </div>
 </template>
 
 <script>
+import { getPostById } from "../api/posts";
+
 export default {
   data() {
     return {
-      title: "",
-      content: ""
+      post: null
     };
+  },
+  mounted() {
+    getPostById(this.$route.params.id)
+      .then(response => (this.post = response.data))
+      .catch(err => console.log(err));
   }
 };
 </script>

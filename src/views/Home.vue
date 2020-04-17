@@ -1,12 +1,18 @@
 <template>
   <div class="home" v-if="posts">
-    <PostPreview v-for="post in posts" :key="post._id" :title="post.title" :content="post.content" />
+    <PostPreview
+      v-for="(post,index) in posts"
+      :key="post._id"
+      :post="post"
+      :index="index"
+      @delete-post="deletePost"
+    />
   </div>
 </template>
 
 <script>
 import PostPreview from "../components/PostPreview";
-import { getPosts } from "../api/posts";
+import { getPosts, deletePost } from "../api/posts";
 
 export default {
   components: { PostPreview },
@@ -14,6 +20,12 @@ export default {
     return {
       posts: null
     };
+  },
+  methods: {
+    deletePost(index) {
+      deletePost(this.posts[index]._id);
+      this.posts.splice(index, 1);
+    }
   },
   created() {
     getPosts()
