@@ -1,6 +1,6 @@
 <template>
   <div class="post" v-if="post">
-    <div class="title">{{post.title}}</div>
+    <h1 class="title">{{post.title}}</h1>
     <div class="content" v-html="htmlResult"></div>
     <div class="post-nav"></div>
   </div>
@@ -16,7 +16,7 @@ const md = new MarkdownIt({
     if (lang && hljs.getLanguage(lang)) {
       try {
         return (
-          '<pre class="hljs"><code>' +
+          `<pre><code  class="hljs ${lang}">` +
           hljs.highlight(lang, str, true).value +
           "</code></pre>"
         );
@@ -58,5 +58,9 @@ export default {
   background-color: #fff;
   width: 250px;
   height: 80%;
+}
+
+.content {
+  padding: 30px;
 }
 </style>
