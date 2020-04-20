@@ -27,7 +27,7 @@ export default {
       this.posts.splice(index, 1);
     }
   },
-  created() {
+  mounted() {
     getPosts()
       .then(response => (this.posts = response.data))
       .catch(err => console.log(err));

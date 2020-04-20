@@ -25,7 +25,7 @@ const md = new MarkdownIt({
       }
     }
     return (
-      '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + "</code></pre>"
+      '<pre><code class="hljs">' + md.utils.escapeHtml(str) + "</code></pre>"
     );
   }
 });

@@ -99,12 +99,16 @@ body {
             line-height: 15px;
             height: 15px;
             font-weight: 600;
+            content: "Code";
           }
           &.js::before {
             content: "JS";
           }
           &.html::before {
             content: "HTML";
+          }
+          &.bash::before {
+            content: "Shell";
           }
         }
       }
