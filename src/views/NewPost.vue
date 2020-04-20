@@ -1,9 +1,7 @@
 <template>
   <div class="new-post">
-    <!--标题编辑-->
-    <el-input v-model="post.title" placeholder="标题"></el-input>
     <!--内容编辑-->
-    <el-input v-model="post.content" placeholder="内容" type="textarea" autosize></el-input>
+    <el-input v-model="content" placeholder="内容" type="textarea" autosize></el-input>
     <!--提交按钮-->
     <el-button type="primary" @click="submitPost">提交</el-button>
   </div>
@@ -15,21 +13,22 @@ import { createPost } from "../api/posts";
 export default {
   data() {
     return {
-      post: {
-        title: "",
-        content: ""
-      }
+      content: ""
     };
   },
   methods: {
     submitPost() {
-      createPost(this.post)
+      // 截取 content 的第一行作为标题，传入后端
+      let index = this.content.indexOf("\n");
+      let firstLine = this.content.substring(2, index);
+      let post = {
+        title: firstLine,
+        content: this.content
+      };
+      createPost(post)
         .then(response => console.log(response.data))
         .catch(err => console.log(err));
-      this.post = {
-        title: "",
-        content: ""
-      };
+      this.content = "";
     }
   }
 };

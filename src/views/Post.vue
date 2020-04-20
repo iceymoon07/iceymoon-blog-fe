@@ -1,6 +1,5 @@
 <template>
   <div class="post" v-if="post">
-    <h1 class="title">{{post.title}}</h1>
     <div class="content" v-html="htmlResult"></div>
     <div class="post-nav"></div>
   </div>
