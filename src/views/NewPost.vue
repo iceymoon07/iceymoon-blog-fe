@@ -1,5 +1,5 @@
 <template>
-  <div class="edit">
+  <div class="new-post">
     <!--标题编辑-->
     <el-input v-model="post.title" placeholder="标题"></el-input>
     <!--内容编辑-->
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { updatePost, getPostById } from "../api/posts";
+import { createPost } from "../api/posts";
 
 export default {
   data() {
@@ -18,13 +18,12 @@ export default {
       post: {
         title: "",
         content: ""
-      },
-      id: this.$route.params.id
+      }
     };
   },
   methods: {
     submitPost() {
-      updatePost(this.id, this.post)
+      createPost(this.post)
         .then(response => console.log(response.data))
         .catch(err => console.log(err));
       this.post = {
@@ -32,17 +31,9 @@ export default {
         content: ""
       };
     }
-  },
-  mounted() {
-    getPostById(this.id)
-      .then(response => {
-        this.post.title = response.data.title;
-        this.post.content = response.data.content;
-      })
-      .catch(err => console.log(err));
   }
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 </style>

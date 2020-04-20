@@ -1,11 +1,20 @@
 import fetch from '../http/fetch'
 
-export const createPost = (title, content) => fetch.post('posts', { title: title, content: content })
-
-export const getPostsCount = () => fetch.get('posts/count')
+/**
+ * post:{
+ *   title:String,
+ *   content:String
+ * }
+ */
 
 export const getPosts = () => fetch.get('posts')
 
+export const getPostById = (id) => fetch.get(`posts/${id}`)
+
+export const getPostsCount = () => fetch.get('posts/count')
+
+export const createPost = (post) => fetch.post('posts', post)
+
 export const deletePost = (id) => fetch.delete(`posts/${id}`)
 
-export const getPostById = (id) => fetch.get(`posts/${id}`)
+export const updatePost = (id, post) => fetch.put(`posts/${id}`, post)

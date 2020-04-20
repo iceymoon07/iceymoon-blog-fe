@@ -7,6 +7,7 @@ import Link from "../views/Link"
 import About from "../views/About"
 import Edit from "../views/Edit"
 import Post from '../views/Post'
+import NewPost from '../views/NewPost'
 
 Vue.use(VueRouter);
 
@@ -37,7 +38,12 @@ const routes = [
         component: About
     },
     {
-        path: "/edit",
+        path: "/newpost",
+        name: "NewPost",
+        component: NewPost
+    },
+    {
+        path: "/edit/:id",
         name: "Edit",
         component: Edit
     },
