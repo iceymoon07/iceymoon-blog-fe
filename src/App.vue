@@ -6,9 +6,11 @@
       <!--顶栏-->
       <top-bar />
       <!--路由视图区域-->
-      <transition name="el-fade-in">
-        <router-view class="router-view" v-show="show" />
-      </transition>
+      <div class="container">
+        <transition name="el-fade-in">
+          <router-view class="router-view" v-show="show" />
+        </transition>
+      </div>
     </div>
   </div>
 </template>
@@ -61,16 +63,19 @@ body {
   .main {
     width: 85%;
     background-color: #f4f5f5;
-    overflow-y: scroll;
-    &::-webkit-scrollbar {
-      //display: none;
-    }
-    .router-view {
-      background-color: #fff;
-      width: 65%;
-      min-height: calc(100% - 80px);
-      margin-top: 30px;
-      margin-left: 6%;
+    .container {
+      height: calc(100% - 50px);
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        //display: none;
+      }
+      .router-view {
+        background-color: #fff;
+        width: 65%;
+        min-height: calc(100% - 30px);
+        margin-top: 30px;
+        margin-left: 6%;
+      }
     }
   }
 }
