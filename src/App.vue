@@ -49,11 +49,13 @@ export default {
 html,
 body {
   height: 100%;
+  //font-size: 14px;
 }
 
 #app {
   height: 100%;
   display: flex;
+  color: #333;
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
     "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   .main {
@@ -69,49 +71,6 @@ body {
       min-height: calc(100% - 80px);
       margin-top: 30px;
       margin-left: 6%;
-
-      code {
-        color: #ffffaa;
-        background-color: #333;
-        padding: 3px 5px;
-        margin: 0 2px;
-        border-radius: 2px;
-        white-space: nowrap;
-        font: 0.85em firacode;
-      }
-
-      pre {
-        position: relative;
-        code {
-          // 代码区样式，抄了下 Vue 官网的
-          padding: 1.2em 1.4em;
-          line-height: 1.6rem;
-          color: #fff;
-          white-space: pre;
-          &::before {
-            position: absolute;
-            top: 0;
-            right: 0;
-            color: #ccc;
-            text-align: right;
-            font-size: 0.9em;
-            padding: 5px 10px 0;
-            line-height: 15px;
-            height: 15px;
-            font-weight: 600;
-            content: "Code";
-          }
-          &.js::before {
-            content: "JS";
-          }
-          &.html::before {
-            content: "HTML";
-          }
-          &.bash::before {
-            content: "Shell";
-          }
-        }
-      }
     }
   }
 }

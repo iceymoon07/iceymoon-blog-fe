@@ -1,0 +1,101 @@
+// Markdown 样式设置
+.post-content {
+
+    //标题样式
+    h1,
+    h2,
+    h3 {
+        line-height: 1.5;
+        margin-top: 35px;
+        margin-bottom: 10px;
+    }
+
+    // 一级标题样式
+    h1 {
+        margin: 20px 0;
+    }
+
+    // 二级标题样式
+    h2 {
+        padding-bottom: 12px;
+        border-bottom: 1px solid #ececec;
+    }
+
+    // 三级标题样式
+    h3 {
+        padding-bottom: 0;
+    }
+
+    // 段落样式
+    p {
+        margin: 22px 0;
+    }
+
+    // 行内代码区样式
+    code {
+        color: #ffffaa;
+        background-color: #333;
+        padding: 3px 5px;
+        margin: 0 2px;
+        border-radius: 2px;
+        white-space: nowrap;
+        font: 0.85em firacode;
+    }
+
+    // 列表样式
+    ol,
+    ul {
+        padding-left: 30px;
+    }
+
+    // 区块样式
+    blockquote {
+        color: #666;
+        padding: 1px 23px;
+        margin: 22px 0;
+        border-left: 4px solid #cbcbcb;
+        background-color: #f8f8f8;
+
+        p {
+            margin: 10px 0;
+        }
+    }
+
+    // 块级代码区样式，抄了下 Vue 官网的
+    pre {
+        position: relative;
+
+        code {
+            padding: 1.2em 1.4em;
+            line-height: 1.6rem;
+            color: #fff;
+            white-space: pre;
+
+            &::before {
+                position: absolute;
+                top: 0;
+                right: 0;
+                color: #ccc;
+                text-align: right;
+                font-size: 0.9em;
+                padding: 5px 10px 0;
+                line-height: 15px;
+                height: 15px;
+                font-weight: 600;
+                content: "Code";
+            }
+
+            &.js::before {
+                content: "JS";
+            }
+
+            &.html::before {
+                content: "HTML";
+            }
+
+            &.bash::before {
+                content: "Shell";
+            }
+        }
+    }
+}

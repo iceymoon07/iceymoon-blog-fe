@@ -29,7 +29,7 @@ export default {
   },
   mounted() {
     getPosts()
-      .then(response => (this.posts = response.data))
+      .then(response => (this.posts = response.data.reverse()))
       .catch(err => console.log(err));
   }
 };

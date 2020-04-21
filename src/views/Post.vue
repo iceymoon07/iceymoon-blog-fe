@@ -1,6 +1,7 @@
 <template>
   <div class="post" v-if="post">
-    <div class="content" v-html="htmlResult"></div>
+    <div class="post-info">info</div>
+    <div class="post-content" v-html="htmlResult"></div>
     <div class="post-nav"></div>
   </div>
 </template>
@@ -9,6 +10,7 @@
 import { getPostById } from "../api/posts";
 import hljs from "highlight.js";
 import "highlight.js/styles/agate.css";
+import "../style/markdown.less";
 const MarkdownIt = require("markdown-it");
 const md = new MarkdownIt({
   highlight: function(str, lang) {
@@ -59,7 +61,8 @@ export default {
   height: 80%;
 }
 
-.content {
-  padding: 30px;
+.post-content {
+  padding: 0 30px;
+  line-height: 1.75;
 }
 </style>

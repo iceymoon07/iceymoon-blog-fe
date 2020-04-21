@@ -19,8 +19,8 @@ export default {
   methods: {
     submitPost() {
       // 截取 content 的第一行作为标题，传入后端
-      let index = this.content.indexOf("\n");
-      let firstLine = this.content.substring(2, index);
+      let index = this.content.indexOf("\n"); // 取得 content 第一个换行符的索引值
+      let firstLine = this.content.substring(2, index); // 通过 substring 方法截取出首行字符串
       let post = {
         title: firstLine,
         content: this.content
