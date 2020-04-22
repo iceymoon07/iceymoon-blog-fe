@@ -56,9 +56,12 @@ export default {
 .left-nav {
   background-color: #22313f;
   width: 15%;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none; // Firefox 滚动条隐藏
+  -ms-overflow-style: none; // IE10+ 滚动条隐藏
   &::-webkit-scrollbar {
-    display: none;
+    display: none; // Chrome、Safari 滚动条隐藏
   }
   color: white;
   .logo {
