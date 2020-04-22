@@ -1,5 +1,5 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from "vue"
+import VueRouter from "vue-router"
 import Home from "../views/Home"
 import Archives from "../views/Archives"
 import Project from "../views/Project"
@@ -9,7 +9,12 @@ import Edit from "../views/Edit"
 import Post from '../views/Post'
 import NewPost from '../views/NewPost'
 
-Vue.use(VueRouter);
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+ return originalPush.call(this, location).catch(err => err)
+}
+
+Vue.use(VueRouter)
 
 const routes = [
     {
