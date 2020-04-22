@@ -1,11 +1,15 @@
 <template>
   <div class="post" v-if="post">
+    <!--文章信息-->
     <div class="post-info">
       <span>创建时间：{{formatDate(post.createdAt)}}</span>
       <span>最后修改于：{{formatDate(post.updatedAt)}}</span>
+      <span>分类：待开发</span>
     </div>
+    <!--文章内容（Markdown）-->
     <div class="post-content" v-html="htmlResult"></div>
-    <div class="post-nav"></div>
+    <!--文章导航目录-->
+    <div class="post-nav">目录</div>
   </div>
 </template>
 
@@ -67,6 +71,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.post-info {
+  span {
+    margin-right: 10px;
+  }
+}
+
 .post-nav {
   position: fixed;
   top: 80px;

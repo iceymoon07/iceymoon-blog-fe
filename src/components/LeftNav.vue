@@ -56,7 +56,7 @@ export default {
 .left-nav {
   background-color: #22313f;
   width: 15%;
-  overflow-x: hidden;
+  overflow-x: hidden; // 左侧导航栏有未知的宽度被撑开问题
   overflow-y: auto;
   scrollbar-width: none; // Firefox 滚动条隐藏
   -ms-overflow-style: none; // IE10+ 滚动条隐藏
@@ -79,8 +79,10 @@ export default {
   .info {
     text-align: center;
     margin-top: 230px;
+    // 去除 a 标签的默认样式
     a {
       text-decoration: none;
+      color: #fff;
       &:hover {
         opacity: 0.5;
         color: #fff;

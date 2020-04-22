@@ -1,5 +1,6 @@
 <template>
   <div class="top-bar">
+    <span>登录</span>
     <span @click="$router.push('/newpost')">写文章</span>
     <el-input v-model="search" prefix-icon="el-icon-search" placeholder="搜索"></el-input>
   </div>
