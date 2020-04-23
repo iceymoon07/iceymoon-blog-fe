@@ -4,6 +4,7 @@
     <div class="post-info">
       <span>创建时间：{{formatDate(post.createdAt)}}</span>
       <span>最后修改于：{{formatDate(post.updatedAt)}}</span>
+      <span>阅读数：{{post.viewcount}}</span>
       <span>分类：待开发</span>
     </div>
     <!--文章内容（Markdown）-->
@@ -14,7 +15,7 @@
 </template>
 
 <script>
-import { getPostById } from "../api/posts";
+import { getPostById, addPostView } from "../api/posts";
 import hljs from "highlight.js";
 import "highlight.js/styles/agate.css";
 import "../style/markdown.less";
@@ -63,6 +64,9 @@ export default {
   },
   mounted() {
     // 组件挂载完成时，根据路由 id 从后端获取文章数据
+    addPostView(this.$route.params.id)
+      .then(response => console.log(response))
+      .catch(err => console.log(err));
     getPostById(this.$route.params.id)
       .then(response => (this.post = response.data))
       .catch(err => console.log(err));

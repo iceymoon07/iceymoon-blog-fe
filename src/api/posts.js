@@ -18,3 +18,5 @@ export const createPost = (post) => fetch.post('posts', post)
 export const deletePost = (id) => fetch.delete(`posts/${id}`)
 
 export const updatePost = (id, post) => fetch.put(`posts/${id}`, post)
+
+export const addPostView = (id) => fetch.put(`posts/${id}/addview`)
