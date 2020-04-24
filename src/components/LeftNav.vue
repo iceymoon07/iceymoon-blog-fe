@@ -10,13 +10,13 @@
         <i class="iconfont iconfolder"></i>
         <span>归档</span>
       </el-menu-item>
-      <el-submenu index="3">
+      <el-submenu index="3" v-if="tags">
         <template slot="title">
           <i class="iconfont iconall"></i>
           <span>分类</span>
         </template>
-        <el-menu-item v-for="(item, index) in categories" :key="index" :index="'3-'+(index+1)">
-          <span>{{item}}</span>
+        <el-menu-item v-for="(tag, index) in tags" :key="tag._id" :index="'3-'+(index+1)">
+          <span>{{tag.name}}</span>
         </el-menu-item>
       </el-submenu>
       <el-menu-item index="4" @click="$router.push('/project')">
@@ -43,11 +43,18 @@
 </template>
 
 <script>
+import { getTags } from "../api/tags";
+
 export default {
   data() {
     return {
-      categories: ["js", "html", "css", 22]
+      tags: null
     };
+  },
+  mounted() {
+    getTags()
+      .then(response => (this.tags = response.data))
+      .catch(err => console.log(err));
   }
 };
 </script>
