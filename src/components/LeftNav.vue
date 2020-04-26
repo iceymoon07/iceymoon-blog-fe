@@ -15,7 +15,7 @@
           <i class="iconfont iconall"></i>
           <span>分类</span>
         </template>
-        <el-menu-item v-for="(tag, index) in tags" :key="tag._id" :index="'3-'+(index+1)">
+        <el-menu-item v-for="(tag, index) in tags" :key="tag._id" :index="'3-'+(index+1)" @click="$router.push(`/category/${tag.name}`)">
           <span>{{tag.name}}</span>
         </el-menu-item>
       </el-submenu>

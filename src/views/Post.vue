@@ -4,7 +4,7 @@
     <div class="post-info">
       <span>创建时间：{{formatDate(post.createdAt)}}</span>
       <span>最后修改于：{{formatDate(post.updatedAt)}}</span>
-      <span>阅读数：{{post.viewcount}}</span>
+      <span>阅读数：{{post.viewCount}}</span>
       <span>分类：待开发</span>
     </div>
     <!--文章内容（Markdown）-->

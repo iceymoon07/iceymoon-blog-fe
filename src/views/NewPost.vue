@@ -1,34 +1,28 @@
 <template>
   <div class="new-post">
-    <!--内容编辑-->
-    <el-input v-model="content" placeholder="内容" type="textarea" autosize></el-input>
-    <!--提交按钮-->
-    <el-button type="primary" @click="submitPost">提交</el-button>
+    <post-editor :prop_content="content" :prop_tags="tags" @submitPost="handleSubmitPost"></post-editor>
   </div>
 </template>
 
 <script>
+import PostEditor from "../components/PostEditor";
 import { createPost } from "../api/posts";
 
 export default {
+  components: { PostEditor },
   data() {
     return {
-      content: ""
+      content: "",
+      tags: []
     };
   },
   methods: {
-    submitPost() {
-      // 截取 content 的第一行作为标题，传入后端
-      let index = this.content.indexOf("\n"); // 取得 content 第一个换行符的索引值
-      let firstLine = this.content.substring(2, index); // 通过 substring 方法截取出首行字符串
-      let post = {
-        title: firstLine,
-        content: this.content
-      };
+    handleSubmitPost(post) {
       createPost(post)
         .then(response => console.log(response.data))
-        .catch(err => console.log(err));
+        .catch(/*err => console.log(err)*/);
       this.content = "";
+      this.tags = [];
     }
   }
 };

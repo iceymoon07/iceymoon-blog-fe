@@ -8,11 +8,12 @@ import About from "../views/About"
 import Edit from "../views/Edit"
 import Post from '../views/Post'
 import NewPost from '../views/NewPost'
+import Category from '../views/Category'
 
 // 解决重复点击相同路由报错问题
 const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push(location) {
- return originalPush.call(this, location).catch(err => err)
+    return originalPush.call(this, location).catch(err => err)
 }
 
 Vue.use(VueRouter)
@@ -57,6 +58,11 @@ const routes = [
         path: "/post/:id",
         name: "Post",
         component: Post
+    },
+    {
+        path: "/category/:tag",
+        name: "Category",
+        component: Category
     }
 ];
 
