@@ -8,7 +8,7 @@
       <!--路由视图区域-->
       <div class="container">
         <transition name="el-fade-in">
-          <router-view class="router-view" v-show="show" />
+          <router-view class="router-view" v-show="show" :key="$route.fullpath + new Date()" />
         </transition>
       </div>
     </div>
@@ -22,7 +22,9 @@ import TopBar from "./components/TopBar";
 export default {
   components: { LeftNav, TopBar },
   data() {
-    return { show: true };
+    return {
+      show: true
+    };
   }
 };
 </script>
