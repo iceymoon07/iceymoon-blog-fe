@@ -1,6 +1,11 @@
 <template>
   <div class="edit">
-    <post-editor :prop_content="content" :prop_tags="tags" @submitPost="handleSubmitPost" v-if="content"></post-editor>
+    <post-editor
+      :prop_content="content"
+      :prop_tags="tags"
+      @submitPost="handleSubmitPost"
+      v-if="content"
+    ></post-editor>
   </div>
 </template>
 
@@ -21,13 +26,26 @@ export default {
   methods: {
     handleSubmitPost(post) {
       updatePost(this.id, post)
-        .then(response => console.log(response.data))
-        .catch(err => console.log(err));
-      this.content = "";
-      this.tags = [];
+        .then(response => {
+          this.$message({
+            type: "success",
+            message: response.data.msg
+          });
+          this.$router.push("/");
+        })
+        .catch(err => {
+          if (err.response) {
+            this.$message({
+              type: "error",
+              message: err.response.data.message[0]
+            });
+          } else {
+            console.log(err);
+          }
+        });
     }
   },
-  created() {
+  mounted() {
     getPostById(this.id)
       .then(response => {
         this.content = response.data.content;
