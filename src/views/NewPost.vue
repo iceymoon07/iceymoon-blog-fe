@@ -13,7 +13,8 @@ export default {
   data() {
     return {
       content: "",
-      tags: []
+      tags: [],
+      isSubmitted: false
     };
   },
   methods: {
@@ -24,6 +25,7 @@ export default {
             type: "success",
             message: response.data.msg
           });
+          this.isSubmitted = true;
           this.$router.push("/");
         })
         .catch(err => {
@@ -35,6 +37,23 @@ export default {
           } else {
             console.log(err);
           }
+        });
+    }
+  },
+  beforeRouteLeave(to, from, next) {
+    if (this.isSubmitted) {
+      next();
+    } else {
+      this.$confirm("您还没有提交编辑结果，真的要离开当前页面吗？", "提示", {
+        distinguishCancelAndClose: true,
+        confirmButtonText: "继续编辑",
+        cancelButtonText: "离开"
+      })
+        .then(() => {
+          next(false);
+        })
+        .catch(action => {
+          action === "cancel" ? next() : next(false);
         });
     }
   }

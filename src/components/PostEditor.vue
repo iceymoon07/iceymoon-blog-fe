@@ -23,7 +23,7 @@
       autosize
     ></el-input>
     <!--提交按钮-->
-    <el-button type="primary" @click="$emit('submitPost', post)">提交</el-button>
+    <el-button type="primary" @click="handleClickSubmit">提交</el-button>
   </div>
 </template>
 
@@ -70,6 +70,22 @@ export default {
       }
       this.tagInputVisible = false;
       this.tagInputValue = "";
+    },
+    handleClickSubmit() {
+      this.$confirm("是否确认提交文章编辑结果？", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning"
+      })
+        .then(() => {
+          this.$emit("submitPost", this.post);
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消提交"
+          });
+        });
     }
   }
 };
