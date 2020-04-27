@@ -29,11 +29,11 @@
 
 <script>
 export default {
-  props: ["prop_content", "prop_tags"],
+  props: ["init_content", "init_tags"],
   data() {
     return {
-      content: this.prop_content,
-      tags: this.prop_tags,
+      content: this.init_content,
+      tags: this.init_tags,
       tagInputVisible: false,
       tagInputValue: ""
     };
@@ -66,6 +66,15 @@ export default {
     handleTagInput() {
       let tagInputValue = this.tagInputValue;
       if (tagInputValue) {
+        let isTagExisted = this.tags.indexOf(tagInputValue);
+        if (isTagExisted !== -1) {
+          this.$message({
+            type: "warning",
+            message: "不要输入重复的标签名"
+          });
+          this.tagInputValue = "";
+          return;
+        }
         this.tags.push(tagInputValue);
       }
       this.tagInputVisible = false;

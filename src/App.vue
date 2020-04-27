@@ -8,7 +8,7 @@
       <!--路由视图区域-->
       <div class="container">
         <transition name="el-fade-in">
-          <router-view class="router-view" v-show="show" :key="$route.fullpath + new Date()" />
+          <router-view class="router-view" v-show="show" :key="$route.path + Date.now()" />
         </transition>
       </div>
     </div>

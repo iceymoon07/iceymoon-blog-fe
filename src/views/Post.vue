@@ -2,8 +2,8 @@
   <div class="post" v-if="post">
     <!--文章信息-->
     <div class="post-info">
-      <span>创建时间：{{formatDate(post.createdAt)}}</span>
-      <span>最后修改于：{{formatDate(post.updatedAt)}}</span>
+      <span>创建时间：{{formatDate(post.createdAt).date}}</span>
+      <span>最后修改于：{{formatDate(post.updatedAt).date}}</span>
       <span>阅读数：{{post.viewCount}}</span>
       <span>分类：待开发</span>
     </div>
@@ -16,6 +16,7 @@
 
 <script>
 import { getPostById, addPostView } from "../api/posts";
+import { formatDate } from "../utils/timestamp";
 import hljs from "highlight.js";
 import "highlight.js/styles/agate.css";
 import "../style/markdown.less";
@@ -55,12 +56,7 @@ export default {
   },
   methods: {
     // 格式化后端传过来的时间字符串
-    formatDate(dateStr) {
-      let dateObj = new Date(dateStr); // 用传过来的时间字符串，初始化一个 Date 对象
-      let date = dateObj.toLocaleDateString(); // 格式化日期
-      let time = dateObj.toTimeString().substr(0, 8); // 格式化时间
-      return date + " " + time;
-    }
+    formatDate
   },
   mounted() {
     // 组件挂载完成时，根据路由 id 从后端获取文章数据

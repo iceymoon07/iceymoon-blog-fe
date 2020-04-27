@@ -1,6 +1,6 @@
 <template>
   <div class="new-post">
-    <post-editor :prop_content="content" :prop_tags="tags" @submitPost="handleSubmitPost"></post-editor>
+    <post-editor :init_content="''" :init_tags="[]" @submitPost="handleSubmitPost"></post-editor>
   </div>
 </template>
 
@@ -12,8 +12,6 @@ export default {
   components: { PostEditor },
   data() {
     return {
-      content: "",
-      tags: [],
       isSubmitted: false
     };
   },
