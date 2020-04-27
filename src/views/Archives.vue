@@ -1,5 +1,5 @@
 <template>
-  <div class="archives">
+  <div class="archives" v-if="posts">
     <el-timeline>
       <el-timeline-item>目前总共{{posts.length}}篇文章</el-timeline-item>
       <el-timeline-item v-for="post in posts" :key="post._id">

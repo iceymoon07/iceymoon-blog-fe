@@ -19,7 +19,7 @@
 
 <script>
 import PostPreview from "../components/PostPreview";
-import { getPosts, deletePost } from "../api/posts";
+import { getPostsInfo, deletePost } from "../api/posts";
 
 export default {
   components: { PostPreview },
@@ -46,7 +46,7 @@ export default {
     } // 跳转页数的事件处理，把跳转到的页数设置为当前页数
   },
   mounted() {
-    getPosts()
+    getPostsInfo()
       .then(response => (this.posts = response.data.reverse()))
       .catch(err => console.log(err)); // 初始化所有文章的数据
   }

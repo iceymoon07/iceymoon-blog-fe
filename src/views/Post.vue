@@ -6,7 +6,12 @@
       <span>最后修改于：{{formatDate(post.updatedAt).date}}</span>
       <span>阅读数：{{post.viewCount}}</span>
       <div>
-        <el-tag v-for="(tag, index) in post.tags" :key="index" effect="dark">{{tag}}</el-tag>
+        <el-tag
+          v-for="(tag, index) in post.tags"
+          :key="index"
+          effect="dark"
+          @click.native="$router.push(`/category/${tag}`)"
+        >{{tag}}</el-tag>
       </div>
     </div>
     <!--文章内容（Markdown）-->
