@@ -5,6 +5,7 @@
       v-for="(tag, index) in tags"
       :key="index"
       closable
+      effect="dark"
       @close="handleTagClose(index)"
     >{{tag}}</el-tag>
     <el-input

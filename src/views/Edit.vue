@@ -1,8 +1,8 @@
 <template>
   <div class="edit">
     <post-editor
-      :prop_content="content"
-      :prop_tags="tags"
+      :init_content="content"
+      :init_tags="tags"
       @submitPost="handleSubmitPost"
       v-if="content"
     ></post-editor>

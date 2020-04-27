@@ -5,7 +5,9 @@
       <span>创建时间：{{formatDate(post.createdAt).date}}</span>
       <span>最后修改于：{{formatDate(post.updatedAt).date}}</span>
       <span>阅读数：{{post.viewCount}}</span>
-      <span>分类：待开发</span>
+      <div>
+        <el-tag v-for="(tag, index) in post.tags" :key="index" effect="dark">{{tag}}</el-tag>
+      </div>
     </div>
     <!--文章内容（Markdown）-->
     <div class="post-content" v-html="htmlResult"></div>
