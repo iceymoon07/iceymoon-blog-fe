@@ -24,10 +24,8 @@ export default {
   methods: {
     formatDate
   },
-  mounted() {
-    getPostsByTag(this.tag)
-      .then(response => (this.posts = response.data))
-      .catch(err => console.log(err));
+  async mounted() {
+    this.posts = await getPostsByTag(this.tag);
   }
 };
 </script>

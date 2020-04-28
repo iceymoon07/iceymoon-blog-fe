@@ -23,10 +23,8 @@ export default {
   methods: {
     formatDate
   },
-  mounted() {
-    getPostsInfo('time',-1)
-      .then(response => (this.posts = response.data))
-      .catch(err => console.log(err));
+  async mounted() {
+    this.posts = await getPostsInfo("time", -1);
   }
 };
 </script>

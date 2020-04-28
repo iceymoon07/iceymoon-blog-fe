@@ -56,10 +56,8 @@ export default {
       tags: []
     };
   },
-  mounted() {
-    getTagsInfo()
-      .then(response => (this.tags = response.data))
-      .catch(err => console.log(err));
+  async mounted() {
+    this.tags = await getTagsInfo();
   }
 };
 </script>

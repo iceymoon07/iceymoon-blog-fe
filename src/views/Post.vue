@@ -51,7 +51,8 @@ const md = new MarkdownIt({
 export default {
   data() {
     return {
-      post: null
+      post: null,
+      id: this.$route.params.id
     };
   },
   computed: {
@@ -65,19 +66,15 @@ export default {
     // 格式化后端传过来的时间字符串
     formatDate
   },
-  mounted() {
+  async mounted() {
     // 组件挂载完成时，根据路由 id 从后端获取文章数据
-    addPostView(this.$route.params.id)
-      .then(response => console.log(response))
-      .catch(err => console.log(err));
-    getPostById(this.$route.params.id)
-      .then(response => {
-        if (!response.data) {
-          this.$router.push("/404");
-        }
-        this.post = response.data;
-      })
-      .catch(err => console.log(err));
+    await addPostView(this.id);
+    const res = await getPostById(this.id);
+    if (res) {
+      this.post = res;
+    } else {
+      this.$router.push("/404");
+    }
   }
 };
 </script>

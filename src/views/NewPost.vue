@@ -16,26 +16,11 @@ export default {
     };
   },
   methods: {
-    handleSubmitPost(post) {
-      createPost(post)
-        .then(response => {
-          this.$message({
-            type: "success",
-            message: response.data.msg
-          });
-          this.isSubmitted = true;
-          this.$router.push("/");
-        })
-        .catch(err => {
-          if (err.response) {
-            this.$message({
-              type: "error",
-              message: err.response.data.message[0]
-            });
-          } else {
-            console.log(err);
-          }
-        });
+    async handleSubmitPost(post) {
+      const res = await createPost(post);
+      this.$message.success(res.msg);
+      this.isSubmitted = true;
+      this.$router.push("/");
     }
   },
   beforeRouteLeave(to, from, next) {

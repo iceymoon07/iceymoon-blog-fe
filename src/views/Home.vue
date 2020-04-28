@@ -37,21 +37,17 @@ export default {
     } // 当前页数对应的文章数据，每页10条数据
   },
   methods: {
-    getPostsInfo() {
-      getPostsInfo('time',-1)
-        .then(response => (this.posts = response.data))
-        .catch(err => console.log(err));
-    },
-    handleDelete(index) {
-      deletePost(this.posts[index]._id);
-      this.getPostsInfo(); // 删完文章后，重新请求一次文章数据，刷新一下组件
+    async handleDelete(index) {
+      const res = await deletePost(this.posts[index]._id);
+      this.$message.success(res.msg);
+      this.posts = await getPostsInfo("time", -1); // 删完文章后，重新请求一次文章数据，刷新一下组件
     },
     handleCurrentPageChange(currentPage) {
       this.currentPage = currentPage;
     } // 跳转页数的事件处理，把跳转到的页数设置为当前页数
   },
-  mounted() {
-    this.getPostsInfo();
+  async mounted() {
+    this.posts = await getPostsInfo("time", -1);
   }
 };
 </script>

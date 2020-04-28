@@ -26,35 +26,15 @@ export default {
     };
   },
   methods: {
-    handleSubmitPost(post) {
-      updatePost(this.id, post)
-        .then(response => {
-          this.$message({
-            type: "success",
-            message: response.data.msg
-          });
-          this.isSubmitted = true;
-          this.$router.push("/");
-        })
-        .catch(err => {
-          if (err.response) {
-            this.$message({
-              type: "error",
-              message: err.response.data.message[0]
-            });
-          } else {
-            console.log(err);
-          }
-        });
+    async handleSubmitPost(post) {
+      const res = await updatePost(this.id, post);
+      this.$message.success(res.msg);
     }
   },
-  mounted() {
-    getPostById(this.id)
-      .then(response => {
-        this.content = response.data.content;
-        this.tags = response.data.tags;
-      })
-      .catch(err => console.log(err));
+  async mounted() {
+    const post = await getPostById(this.id);
+    this.content = post.content;
+    this.tags = post.tags;
   },
   beforeRouteLeave(to, from, next) {
     if (this.isSubmitted) {
