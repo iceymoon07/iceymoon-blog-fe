@@ -88,7 +88,16 @@ export default {
         type: "warning"
       })
         .then(() => {
-          this.$emit("submitPost", this.post);
+          const patt = /^# \S.*\n/; // 正则匹配，检测输入内容的首行是否符合 Markdown 一级标题格式
+          const matched = patt.test(this.content);
+          if (matched) {
+            this.$emit("submitPost", this.post); // 符合格式，正常提交
+          } else {
+            this.$message({
+              type: "warning",
+              message: "请按格式标准修改第一行"
+            }); // 不符合格式，弹出警告信息
+          }
         })
         .catch(() => {
           this.$message({
