@@ -33,22 +33,25 @@ export default {
     currentPosts() {
       let firstIndex = (this.currentPage - 1) * 10;
       let lastIndex = firstIndex + 10;
-      return this.posts.slice(firstIndex, lastIndex);// slice方法切片数组
+      return this.posts.slice(firstIndex, lastIndex); // slice方法切片数组
     } // 当前页数对应的文章数据，每页10条数据
   },
   methods: {
+    getPostsInfo() {
+      getPostsInfo('time',-1)
+        .then(response => (this.posts = response.data))
+        .catch(err => console.log(err));
+    },
     handleDelete(index) {
       deletePost(this.posts[index]._id);
-      this.posts.splice(index, 1);
-    }, 
+      this.getPostsInfo(); // 删完文章后，重新请求一次文章数据，刷新一下组件
+    },
     handleCurrentPageChange(currentPage) {
       this.currentPage = currentPage;
     } // 跳转页数的事件处理，把跳转到的页数设置为当前页数
   },
   mounted() {
-    getPostsInfo()
-      .then(response => (this.posts = response.data.reverse()))
-      .catch(err => console.log(err)); // 初始化所有文章的数据
+    this.getPostsInfo();
   }
 };
 </script>

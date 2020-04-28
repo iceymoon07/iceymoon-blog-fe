@@ -9,7 +9,7 @@ import fetch from '../http/fetch'
 
 export const getPosts = () => fetch.get('posts')
 
-export const getPostsInfo = () => fetch.get('posts/info')
+export const getPostsInfo = (orderBy,ascOrDesc) => fetch.get(`posts/info?orderBy=${orderBy}&ascOrDesc=${ascOrDesc}`)
 
 export const getPostById = (id) => fetch.get(`posts/${id}`)
 
