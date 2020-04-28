@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!--左侧导航栏-->
-    <left-nav />
+    <left-nav :key="$route.path + Date.now()" />
     <div class="main">
       <!--顶栏-->
       <top-bar />
