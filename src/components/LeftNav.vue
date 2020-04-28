@@ -10,7 +10,7 @@
         <i class="iconfont iconfolder"></i>
         <span>归档</span>
       </el-menu-item>
-      <el-submenu index="3" v-if="tags">
+      <el-submenu index="3">
         <template slot="title">
           <i class="iconfont iconall"></i>
           <span>分类</span>
@@ -53,7 +53,7 @@ import { getTagsInfo } from "../api/posts";
 export default {
   data() {
     return {
-      tags: null
+      tags: []
     };
   },
   mounted() {

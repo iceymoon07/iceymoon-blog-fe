@@ -24,7 +24,7 @@ export default {
     formatDate
   },
   mounted() {
-    getPostsInfo()
+    getPostsInfo('time',-1)
       .then(response => (this.posts = response.data))
       .catch(err => console.log(err));
   }

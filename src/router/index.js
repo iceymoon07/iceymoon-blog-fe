@@ -9,6 +9,7 @@ import Edit from "../views/Edit"
 import Post from '../views/Post'
 import NewPost from '../views/NewPost'
 import Category from '../views/Category'
+import NotFound from '../views/NotFound'
 
 // 解决重复点击相同路由报错问题
 const originalPush = VueRouter.prototype.push
@@ -63,6 +64,15 @@ const routes = [
         path: "/category/:tag",
         name: "Category",
         component: Category
+    },
+    {
+        path: "/404",
+        name: "NotFound",
+        component: NotFound
+    },
+    {
+        path: "*",
+        redirect: "/404"
     }
 ];
 

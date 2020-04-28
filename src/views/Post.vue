@@ -71,7 +71,12 @@ export default {
       .then(response => console.log(response))
       .catch(err => console.log(err));
     getPostById(this.$route.params.id)
-      .then(response => (this.post = response.data))
+      .then(response => {
+        if (!response.data) {
+          this.$router.push("/404");
+        }
+        this.post = response.data;
+      })
       .catch(err => console.log(err));
   }
 };
