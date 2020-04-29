@@ -38,10 +38,19 @@ export default {
 }
 
 @font-face {
-  // 代码区的字体
+  // 代码区的字体，常规
   font-family: firacode;
-  src: url("../public/fonts/firacode-regular-webfont.woff");
-  src: url("../public/fonts/firacode-regular-webfont.woff2");
+  src: url("../public/fonts/firacode-retina-webfont.woff");
+  src: url("../public/fonts/firacode-retina-webfont.woff2");
+  font-weight: normal;
+}
+
+@font-face {
+  // 代码区的字体，粗体
+  font-family: firacode;
+  src: url("../public/fonts/firacode-bold-webfont.woff");
+  src: url("../public/fonts/firacode-bold-webfont.woff2");
+  font-weight: bold;
 }
 
 * {
