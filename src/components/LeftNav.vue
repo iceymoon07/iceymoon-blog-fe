@@ -10,29 +10,15 @@
         <i class="iconfont iconfolder"></i>
         <span>归档</span>
       </el-menu-item>
-      <el-submenu index="3">
-        <template slot="title">
-          <i class="iconfont iconall"></i>
-          <span>分类</span>
-        </template>
-        <el-menu-item
-          v-for="(tag, index) in tags"
-          :key="index"
-          :index="'3-'+(index+1)"
-          @click="$router.push(`/category/${tag.name}`)"
-        >
-          <span>{{tag.name}}({{tag.count}})</span>
-        </el-menu-item>
-      </el-submenu>
-      <el-menu-item index="4" @click="$router.push('/project')">
+      <el-menu-item index="3" @click="$router.push('/project')">
         <i class="iconfont iconapplication"></i>
         <span>项目</span>
       </el-menu-item>
-      <el-menu-item index="5" @click="$router.push('/link')">
+      <el-menu-item index="4" @click="$router.push('/link')">
         <i class="iconfont iconlianjie"></i>
         <span>链接</span>
       </el-menu-item>
-      <el-menu-item index="6" @click="$router.push('/about')">
+      <el-menu-item index="5" @click="$router.push('/about')">
         <i class="iconfont iconaccount"></i>
         <span>关于</span>
       </el-menu-item>

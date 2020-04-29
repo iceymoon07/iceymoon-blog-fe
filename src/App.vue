@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!--左侧导航栏-->
-    <left-nav :key="$route.path + Date.now()" />
+    <left-nav />
     <div class="main">
       <!--顶栏-->
       <top-bar />
@@ -33,23 +33,27 @@ export default {
 @font-face {
   // logo的字体
   font-family: chunkfive;
-  src: url("../public/fonts/chunkfive-regular-webfont.woff");
-  src: url("../public/fonts/chunkfive-regular-webfont.woff2");
+  src: url("../public/fonts/chunkfive-regular-webfont.woff2") format("woff2"),
+    url("../public/fonts/chunkfive-regular-webfont.woff") format("woff");
+  font-style: normal;
+  font-weight: normal;
 }
 
 @font-face {
   // 代码区的字体，常规
   font-family: firacode;
-  src: url("../public/fonts/firacode-retina-webfont.woff");
-  src: url("../public/fonts/firacode-retina-webfont.woff2");
+  src: url("../public/fonts/firacode-retina-webfont.woff2") format("woff2"),
+    url("../public/fonts/firacode-retina-webfont.woff") format("woff");
+  font-style: normal;
   font-weight: normal;
 }
 
 @font-face {
   // 代码区的字体，粗体
   font-family: firacode;
-  src: url("../public/fonts/firacode-bold-webfont.woff");
-  src: url("../public/fonts/firacode-bold-webfont.woff2");
+  src: url("../public/fonts/firacode-bold-webfont.woff2") format("woff2"),
+    url("../public/fonts/firacode-bold-webfont.woff") format("woff");
+  font-style: normal;
   font-weight: bold;
 }
 
