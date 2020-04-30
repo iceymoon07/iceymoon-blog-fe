@@ -40,7 +40,7 @@ export default {
 }
 
 @font-face {
-  // 代码区的字体，常规
+  // 代码区的字体 firacode，常规
   font-family: firacode;
   src: url("../public/fonts/firacode-retina-webfont.woff2") format("woff2"),
     url("../public/fonts/firacode-retina-webfont.woff") format("woff");
@@ -49,10 +49,28 @@ export default {
 }
 
 @font-face {
-  // 代码区的字体，粗体
+  // 代码区的字体 firacode，粗体
   font-family: firacode;
   src: url("../public/fonts/firacode-bold-webfont.woff2") format("woff2"),
     url("../public/fonts/firacode-bold-webfont.woff") format("woff");
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  // 代码区的字体 consolas，常规
+  font-family: consolas;
+  src: url("../public/fonts/Consolas W99 Regular.woff2") format("woff2"),
+    url("../public/fonts/Consolas W99 Regular.woff") format("woff");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  // 代码区的字体 consolas，粗体
+  font-family: consolas;
+  src: url("../public/fonts/Consolas W99 Bold.woff2") format("woff2"),
+    url("../public/fonts/Consolas W99 Bold.woff") format("woff");
   font-style: normal;
   font-weight: bold;
 }

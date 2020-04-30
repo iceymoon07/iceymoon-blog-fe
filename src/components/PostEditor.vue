@@ -18,6 +18,7 @@
     <el-button v-else @click="showTagInput">+ 添加新标签</el-button>
     <!--内容编辑-->
     <el-input
+      class="post-input"
       v-model="content"
       placeholder="# 首行请按照这样的 Markdown 一级标题形式输入，以便正确读取标题\n输入文章内容"
       type="textarea"
@@ -111,4 +112,11 @@ export default {
 </script>
 
 <style lang="less">
+.post-editor {
+  .post-input {
+    textarea {
+      font-family: consolas;
+    }
+  }
+}
 </style>
