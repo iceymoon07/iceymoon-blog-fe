@@ -28,13 +28,22 @@ export default {
   methods: {
     async handleSubmitPost(post) {
       const res = await updatePost(this.id, post);
-      this.$message.success(res.msg);
+      if (res) {
+        this.$message.success(res.msg);
+        this.isSubmitted = true;
+        this.$router.push("/");
+      }
     }
   },
   async mounted() {
     const post = await getPostById(this.id);
-    this.content = post.content;
-    this.tags = post.tags;
+    if (post) {
+      this.content = post.content;
+      this.tags = post.tags;
+    } else {
+      this.isSubmitted = true;
+      this.$router.push("/404");
+    }
   },
   beforeRouteLeave(to, from, next) {
     if (this.isSubmitted) {

@@ -5,6 +5,8 @@
       <span>创建时间：{{formatDate(post.createdAt).date}}</span>
       <span>最后修改于：{{formatDate(post.updatedAt).date}}</span>
       <span>阅读数：{{post.viewCount}}</span>
+      <i class="iconfont iconxiugai" @click="$router.push(`/edit/${id}`)"></i>
+      <i class="iconfont iconshanchu" @click="handleDelete"></i>
       <div>
         <el-tag
           v-for="(tag, index) in post.tags"
@@ -22,7 +24,7 @@
 </template>
 
 <script>
-import { getPostById, addPostView } from "../api/posts";
+import { getPostById, addPostView, deletePost } from "../api/posts";
 import { formatDate } from "../utils/timestamp";
 import hljs from "highlight.js";
 import "highlight.js/styles/agate.css";
@@ -64,7 +66,21 @@ export default {
   },
   methods: {
     // 格式化后端传过来的时间字符串
-    formatDate
+    formatDate,
+    handleDelete() {
+      this.$confirm("您确定要删除这篇文章吗？", "提示", {
+        confirmButtonText: "确定删除",
+        cancelButtonText: "取消"
+      })
+        .then(async () => {
+          const res = await deletePost(this.id);
+          this.$message.success(res.msg);
+          this.$router.push("/");
+        })
+        .catch(() => {
+          return;
+        });
+    }
   },
   async mounted() {
     // 组件挂载完成时，根据路由 id 从后端获取文章数据
