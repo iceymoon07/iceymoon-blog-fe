@@ -4,11 +4,11 @@
     <left-nav />
     <div class="main">
       <!--顶栏-->
-      <top-bar />
+      <top-bar @change-code-font="handleChangeCodeFont" />
       <!--路由视图区域-->
       <div class="container">
         <transition name="el-fade-in">
-          <router-view class="router-view" v-show="show" :key="$route.path + Date.now()" />
+          <router-view :class="`router-view ${codeFont}`" v-show="show" />
         </transition>
       </div>
     </div>
@@ -18,63 +18,25 @@
 <script>
 import LeftNav from "./components/LeftNav";
 import TopBar from "./components/TopBar";
+import "./style/fontface.less";
 
 export default {
   components: { LeftNav, TopBar },
   data() {
     return {
-      show: true
+      show: true,
+      codeFont: "consolas"
     };
+  },
+  methods: {
+    handleChangeCodeFont(value) {
+      this.codeFont = value;
+    }
   }
 };
 </script>
 
 <style lang="less">
-@font-face {
-  // logo的字体
-  font-family: chunkfive;
-  src: url("../public/fonts/chunkfive-regular-webfont.woff2") format("woff2"),
-    url("../public/fonts/chunkfive-regular-webfont.woff") format("woff");
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  // 代码区的字体 firacode，常规
-  font-family: firacode;
-  src: url("../public/fonts/firacode-retina-webfont.woff2") format("woff2"),
-    url("../public/fonts/firacode-retina-webfont.woff") format("woff");
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  // 代码区的字体 firacode，粗体
-  font-family: firacode;
-  src: url("../public/fonts/firacode-bold-webfont.woff2") format("woff2"),
-    url("../public/fonts/firacode-bold-webfont.woff") format("woff");
-  font-style: normal;
-  font-weight: bold;
-}
-
-@font-face {
-  // 代码区的字体 consolas，常规
-  font-family: consolas;
-  src: url("../public/fonts/Consolas W99 Regular.woff2") format("woff2"),
-    url("../public/fonts/Consolas W99 Regular.woff") format("woff");
-  font-style: normal;
-  font-weight: normal;
-}
-
-@font-face {
-  // 代码区的字体 consolas，粗体
-  font-family: consolas;
-  src: url("../public/fonts/Consolas W99 Bold.woff2") format("woff2"),
-    url("../public/fonts/Consolas W99 Bold.woff") format("woff");
-  font-style: normal;
-  font-weight: bold;
-}
-
 * {
   // 初始化
   margin: 0;
@@ -93,21 +55,33 @@ body {
   color: #333;
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
     "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+
   .main {
     width: 85%;
     background-color: #f4f5f5;
+
     .container {
       height: calc(100% - 50px);
       overflow-y: scroll;
+
       &::-webkit-scrollbar {
         //display: none;
       }
+
       .router-view {
         background-color: #fff;
         width: 65%;
         min-height: calc(100% - 30px);
         margin-top: 30px;
         margin-left: 6%;
+
+        &.consolas code {
+          font-family: consolas;
+        }
+
+        &.firacode code {
+          font-family: firacode;
+        }
       }
     }
   }

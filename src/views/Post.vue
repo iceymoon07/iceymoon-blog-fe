@@ -67,6 +67,7 @@ export default {
   methods: {
     // 格式化后端传过来的时间字符串
     formatDate,
+    // 点击删除文章键的事件处理
     handleDelete() {
       this.$confirm("您确定要删除这篇文章吗？", "提示", {
         confirmButtonText: "确定删除",
