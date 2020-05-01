@@ -19,7 +19,6 @@
     <!--文章内容（Markdown）-->
     <div class="post-content" v-html="htmlResult"></div>
     <!--文章导航目录-->
-    <div class="post-nav">目录</div>
   </div>
 </template>
 
@@ -29,8 +28,11 @@ import { formatDate } from "../utils/timestamp";
 import hljs from "highlight.js";
 import "highlight.js/styles/agate.css";
 import "../style/markdown.less";
-const MarkdownIt = require("markdown-it");
-const md = new MarkdownIt({
+import MarkdownIt from "markdown-it";
+import MarkdownItAnchor from "markdown-it-anchor";
+import MarkdownItTOC from "markdown-it-toc-done-right";
+
+let md = new MarkdownIt({
   // 使用 highlight.js 实现 Markdown 代码区高亮
   highlight: function(str, lang) {
     if (lang && hljs.getLanguage(lang)) {
@@ -49,6 +51,8 @@ const md = new MarkdownIt({
     );
   }
 });
+md.use(MarkdownItAnchor);
+md.use(MarkdownItTOC, { level: [2, 3] });
 
 export default {
   data() {
@@ -101,15 +105,6 @@ export default {
   span {
     margin-right: 10px;
   }
-}
-
-.post-nav {
-  position: fixed;
-  top: 80px;
-  right: 5%;
-  background-color: #fff;
-  width: 250px;
-  height: 80%;
 }
 
 .post-content {
