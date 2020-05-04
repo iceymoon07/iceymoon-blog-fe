@@ -64,9 +64,11 @@ body {
       height: calc(100% - 50px);
       overflow-y: scroll;
 
+      /*
       &::-webkit-scrollbar {
-        //display: none;
+        display: none;
       }
+      */
 
       .router-view {
         background-color: #fff;
@@ -74,6 +76,11 @@ body {
         min-height: calc(100% - 30px);
         margin-top: 30px;
         margin-left: 6%;
+
+        &.home {
+          background-color: #f4f5f5;
+          margin-top: 50px;
+        }
 
         &.consolas code {
           font-family: consolas;

@@ -5,13 +5,15 @@
       <span>创建时间：{{formatDate(post.createdAt).date}}</span>
       <span>最后修改于：{{formatDate(post.updatedAt).date}}</span>
       <span>阅读数：{{post.viewCount}}</span>
-      <i class="iconfont iconxiugai" @click="$router.push(`/edit/${id}`)"></i>
-      <i class="iconfont iconshanchu" @click="handleDelete"></i>
-      <div>
+      <div class="post-opration">
+        <i class="iconfont iconxiugai" @click="$router.push(`/edit/${id}`)"></i>
+        <i class="iconfont iconshanchu" @click="handleDelete"></i>
+      </div>
+      <div class="post-tags">
         <el-tag
           v-for="(tag, index) in post.tags"
           :key="index"
-          effect="dark"
+          effect="light"
           @click.native="$router.push(`/category/${tag}`)"
         >{{tag}}</el-tag>
       </div>
@@ -51,8 +53,8 @@ let md = new MarkdownIt({
     );
   }
 });
-md.use(MarkdownItAnchor);
-md.use(MarkdownItTOC, { level: [2, 3] });
+md.use(MarkdownItAnchor); // 在标题上生成导航锚点
+md.use(MarkdownItTOC, { level: [2, 3] }); // 生成导航目录，应用于二级标题和三级标题
 
 export default {
   data() {
@@ -102,8 +104,40 @@ export default {
 
 <style lang="less" scoped>
 .post-info {
-  span {
+  padding: 10px 30px;
+  position: relative;
+
+  > span {
     margin-right: 10px;
+    font-size: 13px;
+    color: #999;
+  }
+
+  .post-opration {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    i {
+      font-size: 24px;
+      cursor: pointer;
+
+      &.iconxiugai {
+        margin-right: 4px;
+      }
+
+      &.iconshanchu {
+        color: red;
+      }
+    }
+  }
+
+  .post-tags {
+    margin-top: 10px;
+    .el-tag {
+      cursor: pointer;
+      margin-right: 4px;
+    }
   }
 }
 
