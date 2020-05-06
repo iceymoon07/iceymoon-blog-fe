@@ -104,7 +104,7 @@ export default {
 
 <style lang="less" scoped>
 .post-info {
-  padding: 10px 30px;
+  padding: 20px 30px;
   position: relative;
 
   > span {
@@ -136,7 +136,8 @@ export default {
     margin-top: 10px;
     .el-tag {
       cursor: pointer;
-      margin-right: 4px;
+      margin: 4px 4px;
+      border: none;
     }
   }
 }
