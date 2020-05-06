@@ -59,7 +59,6 @@ export default {
   },
   async mounted() {
     this.posts = await getPostsInfo("time", -1);
-
     for (let i = 0; i < this.posts.length; i++) {
       this.nodeColor.push("#bbb");
     }
@@ -90,6 +89,10 @@ export default {
     margin-top: 30px;
     margin-left: 20px;
 
+  .el-timeline-item {
+    padding-bottom: 40px;
+  }
+
     .summary {
       font-weight: bold;
     }
@@ -115,6 +118,7 @@ export default {
 
         .post-title {
           transition: 0.2s;
+          font-size: 16px;
           cursor: pointer;
 
           &:hover {
