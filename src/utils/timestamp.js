@@ -1,3 +1,4 @@
+// 格式化后端传来的时间戳字符串
 export const formatDate = timestamp => {
     let dateObj = new Date(timestamp);
     let year = dateObj.getFullYear();

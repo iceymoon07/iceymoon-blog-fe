@@ -20,7 +20,7 @@
     </div>
     <!--文章内容（Markdown）-->
     <div class="post-content" v-html="htmlResult"></div>
-    <!--文章导航目录-->
+    <div class="post-mulu-title">目录</div>
   </div>
 </template>
 
@@ -143,7 +143,13 @@ export default {
 }
 
 .post-content {
-  padding: 0 30px;
+  padding: 0 30px 40px 30px;
   line-height: 1.75;
+}
+
+.post-mulu-title {
+  position: fixed;
+  top: 90px;
+  right: 300px;
 }
 </style>

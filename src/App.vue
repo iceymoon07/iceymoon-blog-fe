@@ -10,6 +10,11 @@
         <transition name="el-fade-in">
           <router-view :class="`router-view ${codeFont}`" v-show="show" />
         </transition>
+        <el-backtop target=".container" :right="80" :bottom="50">
+          <el-tooltip content="回到顶部" placement="top">
+            <i class="iconfont iconshang"></i>
+          </el-tooltip>
+        </el-backtop>
       </div>
     </div>
   </div>
@@ -88,6 +93,22 @@ body {
 
         &.firacode code {
           font-family: firacode;
+        }
+      }
+
+      .el-backtop {
+        height: 50px;
+        width: 50px;
+        background-color: #22313f;
+
+        i {
+          color: #fff;
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
       }
     }
