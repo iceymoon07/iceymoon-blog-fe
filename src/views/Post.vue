@@ -54,7 +54,7 @@ let md = new MarkdownIt({
   }
 });
 md.use(MarkdownItAnchor); // 在标题上生成导航锚点
-md.use(MarkdownItTOC, { level: [2, 3] }); // 生成导航目录，应用于二级标题和三级标题
+md.use(MarkdownItTOC, { level: [2, 3], listType: "ul" }); // 生成导航目录，应用于二级标题和三级标题
 
 export default {
   data() {
