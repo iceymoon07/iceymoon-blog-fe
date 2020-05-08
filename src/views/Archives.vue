@@ -67,7 +67,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .archives {
   padding: 30px 40px;
 
@@ -78,20 +78,20 @@ export default {
   .all-tags {
     margin-left: 30px;
 
-    .el-tag {
+    /deep/ .el-tag {
       margin: 4px 4px;
       border: none;
       cursor: pointer;
     }
   }
 
-  .el-timeline {
+  /deep/ .el-timeline {
     margin-top: 30px;
     margin-left: 20px;
 
-  .el-timeline-item {
-    padding-bottom: 40px;
-  }
+    .el-timeline-item {
+      padding-bottom: 40px;
+    }
 
     .summary {
       font-weight: bold;

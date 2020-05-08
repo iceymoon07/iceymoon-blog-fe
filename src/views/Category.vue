@@ -58,11 +58,11 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .category {
   padding: 40px 60px;
 
-  .el-timeline {
+  /deep/ .el-timeline {
     .el-timeline-item {
       padding-bottom: 40px;
     }

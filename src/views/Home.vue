@@ -44,11 +44,11 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .home {
   position: relative;
 
-  .el-pagination {
+  /deep/ .el-pagination {
     position: absolute;
     left: 42%;
     top: 105%;
