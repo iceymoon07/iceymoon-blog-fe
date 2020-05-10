@@ -135,9 +135,21 @@ export default {
   .post-tags {
     margin-top: 10px;
     .el-tag {
-      cursor: pointer;
       margin: 4px 4px;
-      border: none;
+      cursor: pointer;
+      border-radius: 16px;
+      border-color: #333;
+      background-color: #fff;
+      color: #333;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.2s;
+
+      &:hover {
+        border-color: #333;
+        background-color: #22313f;
+        color: #fff;
+      }
     }
   }
 }

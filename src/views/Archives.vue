@@ -5,8 +5,6 @@
       <el-tag
         v-for="(tag, index) in tags"
         :key="index"
-        effect="dark"
-        color="#22313f"
         @click.native="$router.push(`/category/${tag.name}`)"
       >{{tag.name}}({{tag.count}})</el-tag>
     </div>
@@ -80,8 +78,20 @@ export default {
 
     /deep/ .el-tag {
       margin: 4px 4px;
-      border: none;
       cursor: pointer;
+      border-radius: 16px;
+      border-color: #333;
+      background-color: #fff;
+      color: #333;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.2s;
+
+      &:hover {
+        border-color: #333;
+        background-color: #22313f;
+        color: #fff;
+      }
     }
   }
 
