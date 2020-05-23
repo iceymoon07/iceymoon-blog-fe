@@ -4,11 +4,11 @@
     <left-nav />
     <div class="main">
       <!--顶栏-->
-      <top-bar @change-code-font="handleChangeCodeFont" />
+      <top-bar />
       <!--路由视图区域-->
       <div class="container">
         <transition name="el-fade-in">
-          <router-view :class="`router-view ${codeFont}`" v-show="show" />
+          <router-view class="router-view" v-show="show" />
         </transition>
         <el-backtop target=".container" :right="80" :bottom="50">
           <el-tooltip content="回到顶部" placement="top">
@@ -24,19 +24,22 @@
 import LeftNav from "./components/LeftNav";
 import TopBar from "./components/TopBar";
 import "./style/fontface.less";
+import { isLogin } from "./api/users";
+import { mapMutations } from "vuex";
 
 export default {
   components: { LeftNav, TopBar },
   data() {
     return {
-      show: true,
-      codeFont: "consolas"
+      show: true
     };
   },
   methods: {
-    handleChangeCodeFont(value) {
-      this.codeFont = value;
-    }
+    ...mapMutations("user", ["setLoginStatus"])
+  },
+  async mounted() {
+    const res = await isLogin();
+    this.setLoginStatus(res);
   }
 };
 </script>
@@ -85,14 +88,6 @@ body {
         &.home {
           background-color: #f4f5f5;
           margin-top: 50px;
-        }
-
-        &.consolas code {
-          font-family: consolas;
-        }
-
-        &.firacode code {
-          font-family: firacode;
         }
       }
 

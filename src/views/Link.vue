@@ -1,5 +1,5 @@
 <template>
-  <div>link Consolas font test</div>
+  <div>暂无内容</div>
 </template>
 
 <script>

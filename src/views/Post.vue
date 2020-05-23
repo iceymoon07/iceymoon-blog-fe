@@ -5,7 +5,7 @@
       <span>创建时间：{{formatDate(post.createdAt).date}}</span>
       <span>最后修改于：{{formatDate(post.updatedAt).date}}</span>
       <span>阅读数：{{post.viewCount}}</span>
-      <div class="post-opration">
+      <div class="post-opration" v-if="isLogin">
         <i class="iconfont iconxiugai" @click="$router.push(`/edit/${id}`)"></i>
         <i class="iconfont iconshanchu" @click="handleDelete"></i>
       </div>
@@ -33,6 +33,7 @@ import "../style/markdown.less";
 import MarkdownIt from "markdown-it";
 import MarkdownItAnchor from "markdown-it-anchor";
 import MarkdownItTOC from "markdown-it-toc-done-right";
+import { mapState } from "vuex";
 
 let md = new MarkdownIt({
   // 使用 highlight.js 实现 Markdown 代码区高亮
@@ -64,6 +65,7 @@ export default {
     };
   },
   computed: {
+    ...mapState("user", ["isLogin"]),
     // markdown-it 把文章内容解析为 html
     htmlResult() {
       let result = md.render(this.post.content);

@@ -74,7 +74,7 @@ export default {
   }
   .info {
     text-align: center;
-    margin-top: 230px;
+    margin-top: 300px;
     // 去除 a 标签的默认样式
     a {
       text-decoration: none;

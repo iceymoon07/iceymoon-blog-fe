@@ -22,6 +22,7 @@ fetch.interceptors.response.use(
         } else {
             Message.error(message[0])
         }
+        return Promise.reject(error)
     } // 响应错误，通过 element-ui 弹出错误信息提示
 )
 

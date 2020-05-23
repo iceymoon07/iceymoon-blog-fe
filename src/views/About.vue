@@ -1,5 +1,5 @@
 <template>
-  <div>about</div>
+  <div>暂无内容</div>
 </template>
 
 <script>

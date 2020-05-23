@@ -1,43 +1,65 @@
 <template>
   <div class="top-bar">
-    <el-select
-      v-model="value"
-      placeholder="选择代码字体"
-      @change="$emit('change-code-font',value)"
-      v-if="isInPostPage"
-    >
-      <el-option v-for="item in codeFont" :key="item.value" :label="item.label" :value="item.value">
-        <span>{{item.label}}</span>
-        <span :style="{'font-family':item.value,float:'right'}">{{fontPreviewText}}</span>
-      </el-option>
-    </el-select>
-    <span>登录</span>
-    <span @click="$router.push('/newpost')">写文章</span>
-    <span>管理</span>
-    <el-input v-model="search" prefix-icon="el-icon-search" placeholder="搜索"></el-input>
+    <span @click="loginDialogVisible=true" v-if="!isLogin">登录</span>
+    <span v-if="isLogin">已登录</span>
+    <span @click="$router.push('/newpost')" v-if="isLogin">写文章</span>
+    <span v-if="isLogin" @click="handleLogout">退出登录</span>
+    <el-dialog title="登录" :visible.sync="loginDialogVisible">
+      <el-form :model="loginForm">
+        <el-form-item label="用户名" label-width="120px">
+          <el-input v-model="loginForm.name"></el-input>
+        </el-form-item>
+        <el-form-item label="密码" label-width="120px">
+          <el-input v-model="loginForm.password" type="password"></el-input>
+        </el-form-item>
+      </el-form>
+      <span slot="footer">
+        <el-button @click="loginDialogVisible=false">取消</el-button>
+        <el-button type="primary" @click="handleLogin">登录</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
+import { login, logout } from "../api/users";
+import { mapMutations, mapState } from "vuex";
+
 export default {
   data() {
     return {
       search: "",
-      codeFont: [
-        { label: "Consolas", value: "consolas" },
-        { label: "Fira Code", value: "firacode" }
-      ],
       fontPreviewText: "</code>",
-      value: ""
+      value: "",
+      loginDialogVisible: false,
+      loginForm: {
+        name: "",
+        password: ""
+      }
     };
   },
   computed: {
+    ...mapState("user", ["isLogin"]),
     isInPostPage() {
       if (this.$route.name === "Post") {
         return true;
       } else {
         return false;
       }
+    }
+  },
+  methods: {
+    ...mapMutations("user", ["setLoginStatus"]),
+    async handleLogin() {
+      const res = await login(this.loginForm);
+      this.$message.success(res.msg);
+      this.setLoginStatus(true);
+      this.loginDialogVisible = false;
+    },
+    async handleLogout() {
+      const res = await logout();
+      this.$message.warning(res.msg);
+      this.setLoginStatus(false);
     }
   }
 };
