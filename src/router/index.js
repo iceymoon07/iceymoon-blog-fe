@@ -12,10 +12,10 @@ import Category from '../views/Category'
 import NotFound from '../views/NotFound'
 
 // 解决重复点击相同路由报错问题
-const originalPush = VueRouter.prototype.push
-VueRouter.prototype.push = function push(location) {
-    return originalPush.call(this, location).catch(err => err)
-}
+// const originalPush = VueRouter.prototype.push
+// VueRouter.prototype.push = function push(location) {
+//     return originalPush.call(this, location).catch(err => err)
+// }
 
 Vue.use(VueRouter)
 
