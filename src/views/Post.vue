@@ -2,9 +2,9 @@
   <div class="post" v-if="post">
     <!--文章信息-->
     <div class="post-info">
-      <span>创建时间：{{formatDate(post.createdAt).date}}</span>
-      <span>最后修改于：{{formatDate(post.updatedAt).date}}</span>
-      <span>阅读数：{{post.viewCount}}</span>
+      <span>创建时间：{{ formatDate(post.createdAt).date }}</span>
+      <span>最后修改于：{{ formatDate(post.updatedAt).date }}</span>
+      <span>阅读数：{{ post.viewCount }}</span>
       <div class="post-opration" v-if="isLogin">
         <i class="iconfont iconxiugai" @click="$router.push(`/edit/${id}`)"></i>
         <i class="iconfont iconshanchu" @click="handleDelete"></i>
@@ -15,7 +15,8 @@
           :key="index"
           effect="light"
           @click.native="$router.push(`/category/${tag}`)"
-        >{{tag}}</el-tag>
+          >{{ tag }}</el-tag
+        >
       </div>
     </div>
     <!--文章内容（Markdown）-->

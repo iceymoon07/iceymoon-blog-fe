@@ -6,27 +6,31 @@
         v-for="(tag, index) in tags"
         :key="index"
         @click.native="$router.push(`/category/${tag.name}`)"
-      >{{tag.name}}({{tag.count}})</el-tag>
+        >{{ tag.name }}({{ tag.count }})</el-tag
+      >
     </div>
     <el-timeline>
       <el-timeline-item class="summary" color="#22313f">
         目前总共
-        <span style="color:red">{{posts.length}}</span> 篇文章
+        <span style="color:red">{{ posts.length }}</span> 篇文章
       </el-timeline-item>
       <el-timeline-item class="year">2020</el-timeline-item>
       <el-timeline-item
         class="post"
-        v-for="(post,index) in posts"
+        v-for="(post, index) in posts"
         :key="post._id"
         :color="nodeColor[index]"
       >
-        <span class="post-date">{{formatDate(post.createdAt).date.substr(5)}}</span>
+        <span class="post-date">{{
+          formatDate(post.createdAt).date.substr(5)
+        }}</span>
         <span
           class="post-title"
           @click="$router.push(`/post/${post._id}`)"
           @mouseenter="handleMouseEnterTitle(index)"
           @mouseleave="handleMouseLeaveTitle(index)"
-        >{{post.title}}</span>
+          >{{ post.title }}</span
+        >
       </el-timeline-item>
     </el-timeline>
   </div>

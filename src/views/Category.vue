@@ -2,25 +2,28 @@
   <div class="category" v-if="posts">
     <el-timeline>
       <el-timeline-item class="summary">
-        <span style="font-size:20px">{{tag}}</span>
+        <span style="font-size:20px">{{ tag }}</span>
         <span style="color:#bbb">
           分类 共
-          <span style="color:red">{{posts.length}}</span> 篇文章
+          <span style="color:red">{{ posts.length }}</span> 篇文章
         </span>
       </el-timeline-item>
       <el-timeline-item
         class="post"
-        v-for="(post,index) in posts"
+        v-for="(post, index) in posts"
         :key="post._id"
         :color="nodeColor[index]"
       >
-        <span class="post-date">{{formatDate(post.createdAt).date.substr(5)}}</span>
+        <span class="post-date">{{
+          formatDate(post.createdAt).date.substr(5)
+        }}</span>
         <span
           class="post-title"
           @click="$router.push(`/post/${post._id}`)"
           @mouseenter="handleMouseEnterTitle(index)"
           @mouseleave="handleMouseLeaveTitle(index)"
-        >{{post.title}}</span>
+          >{{ post.title }}</span
+        >
       </el-timeline-item>
     </el-timeline>
   </div>

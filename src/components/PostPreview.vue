@@ -1,21 +1,21 @@
 <template>
   <div class="post-preview">
     <div class="post-date">
-      <div class="post-month">{{date.substr(5,2)+'月'}}</div>
-      <div class="post-day">{{date.substr(8,2)}}</div>
+      <div class="post-month">{{ date.substr(5, 2) + "月" }}</div>
+      <div class="post-day">{{ date.substr(8, 2) }}</div>
     </div>
     <h1 class="post-title">
-      <div @click="$router.push(`/post/${post._id}`)">{{post.title}}</div>
+      <div @click="$router.push(`/post/${post._id}`)">{{ post.title }}</div>
     </h1>
     <div class="post-info">
       <span class="post-created-at">
         <i class="iconfont iconriqi"></i>
-        <span>发表于 {{date}}</span>
+        <span>发表于 {{ date }}</span>
       </span>
       <span class="post-info-divider">|</span>
       <span class="post-view-count">
         <i class="iconfont iconliulan"></i>
-        <span>阅读数 {{post.viewCount}}</span>
+        <span>阅读数 {{ post.viewCount }}</span>
       </span>
       <span class="post-info-divider">|</span>
       <span class="post-tags">
@@ -25,7 +25,8 @@
           v-for="(tag, index) in post.tags"
           :key="index"
           @click="$router.push(`/category/${tag}`)"
-        >{{tag}}</span>
+          >{{ tag }}</span
+        >
       </span>
     </div>
   </div>

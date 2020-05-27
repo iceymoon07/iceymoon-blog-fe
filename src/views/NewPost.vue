@@ -1,6 +1,10 @@
 <template>
   <div class="new-post">
-    <post-editor :init_content="''" :init_tags="[]" @submitPost="handleSubmitPost"></post-editor>
+    <post-editor
+      :init_content="''"
+      :init_tags="[]"
+      @submitPost="handleSubmitPost"
+    ></post-editor>
   </div>
 </template>
 
@@ -43,5 +47,4 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>

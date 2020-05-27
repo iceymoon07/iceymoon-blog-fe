@@ -7,7 +7,8 @@
       closable
       effect="dark"
       @close="handleTagClose(index)"
-    >{{tag}}</el-tag>
+      >{{ tag }}</el-tag
+    >
     <el-input
       v-if="tagInputVisible"
       v-model="tagInputValue"
