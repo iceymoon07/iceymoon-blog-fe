@@ -1,23 +1,9 @@
 <template>
   <div class="top-bar">
-    <span
-      class="top-bar-label--login"
-      @click="loginDialogVisible = true"
-      v-if="!isLogin"
-      >登录</span
-    >
-    <span class="top-bar-label--logged" style="color:red" v-if="isLogin"
-      >已登录</span
-    >
-    <span
-      class="top-bar-label--newpost"
-      @click="$router.push('/newpost')"
-      v-if="isLogin"
-      >写文章</span
-    >
-    <span class="top-bar-label--logout" v-if="isLogin" @click="handleLogout"
-      >退出登录</span
-    >
+    <span class="top-bar-label--login" @click="loginDialogVisible = true" v-if="!isLogin">登录</span>
+    <span class="top-bar-label--logged" style="color:red" v-if="isLogin">已登录</span>
+    <span class="top-bar-label--newpost" @click="$router.push('/newpost')" v-if="isLogin">写文章</span>
+    <span class="top-bar-label--logout" v-if="isLogin" @click="handleLogout">退出登录</span>
     <el-dialog title="登录" :visible.sync="loginDialogVisible">
       <el-form :model="loginForm">
         <el-form-item label="用户名" label-width="120px">

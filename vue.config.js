@@ -1,4 +1,5 @@
 module.exports = {
+  productionSourceMap: false,
   devServer: {
     proxy: {
       "/api": {
@@ -6,5 +7,15 @@ module.exports = {
         pathRewrite: { "^/api": "" }
       }
     }
+  },
+  configureWebpack: config => {
+    config.externals = {
+      vue: "window.Vue",
+      "vue-router": "window.VueRouter",
+      vuex: "window.Vuex",
+      "element-ui": "window.ELEMENT",
+      axios: "window.axios",
+      "markdown-it": "window.markdownit"
+    };
   }
 };
